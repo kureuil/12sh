@@ -5,7 +5,7 @@
 ## Login   <person_l@epitech.net>
 ## 
 ## Started on  Tue Jan 20 14:03:29 2015 Louis Person
-## Last update Thu Jan 22 00:30:25 2015 Louis Person
+## Last update Sun Jan 25 23:39:48 2015 Louis Person
 ##
 
 NAME	= mysh
@@ -17,7 +17,6 @@ RM	= rm -rf
 CFLAGS	+= -g
 CFLAGS	+= -Wall
 CFLAGS	+= -Wextra
-CFLAGS	+= -pedantic
 CFLAGS	+= -I ./inc/
 
 LDFLAGS	= -L ./lib/
@@ -28,7 +27,11 @@ SRCS	= src/minishell.c \
 	src/error.c \
 	src/path.c \
 	src/command.c \
-	src/input.c
+	src/input.c \
+	src/builtins.c \
+	src/prompt.c \
+	src/builtins/env.c \
+	src/builtins/cd.c
 
 OBJS	= $(SRCS:.c=.o)
 

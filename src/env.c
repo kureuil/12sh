@@ -5,9 +5,10 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Wed Jan 21 22:56:21 2015 Louis Person
-** Last update Thu Jan 22 00:17:19 2015 Louis Person
+** Last update Sun Jan 25 22:23:22 2015 Louis Person
 */
 
+#include <stdlib.h>
 #include <unistd.h>
 #include "my.h"
 
@@ -34,13 +35,18 @@ t_dict		*parse_env()
   return (env);
 }
 
-void	puts_env(void *ptr)
+char	*serialize_env(char *key, char *value)
 {
-  t_bucket	*bucket;
+  int	klen;
+  int	vlen;
+  char	*res;
 
-  bucket = (t_bucket *)ptr;
-  my_putstr(bucket->key);
-  my_putchar('=');
-  my_putstr(bucket->data);
-  my_putchar('\n');
+  klen = my_strlen(key);
+  vlen = my_strlen(value);
+  if ((res = malloc(klen + vlen + 2)) == NULL)
+    return (NULL);
+  my_strcpy(res, key);
+  my_strncat(res, "=", 1);
+  my_strncat(res, value, vlen);
+  return (res);
 }
