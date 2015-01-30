@@ -1,15 +1,16 @@
 /*
-** env.c<2> for minishell1 in /home/person_l
+** env.c<2> for fabrish in /home/person_l
 ** 
 ** Made by Louis Person
 ** Login   <person_l@epitech.net>
 ** 
-** Started on  Sun Jan 25 22:42:14 2015 Louis Person
-** Last update Mon Jan 26 00:44:02 2015 Louis Person
+** Started on  Thu Jan 29 20:46:56 2015 Louis Person
+** Last update Thu Jan 29 20:51:11 2015 Louis Person
 */
 
 #include <stdlib.h>
 #include "my.h"
+#include "shell.h"
 
 void		puts_env(void *ptr)
 {
@@ -22,14 +23,14 @@ void		puts_env(void *ptr)
   my_putstr("\n");
 }
 
-t_error	env_builtin(t_darray *cmd, t_dict *env)
+t_error	builtin_env(t_darray *cmd, t_shell *shell)
 {
   cmd = NULL;
-  tree_map(env->root, &puts_env);
+  tree_map(shell->env->root, &puts_env);
   return (OK);
 }
 
-t_error	setenv_builtin(t_darray *cmd, t_dict *env)
+t_error	builtin_setenv(t_darray *cmd, t_shell *shell)
 {
   char	*key;
   char	*value;
@@ -42,25 +43,25 @@ t_error	setenv_builtin(t_darray *cmd, t_dict *env)
   value = my_strdup(copy);
   if (my_strlen(value) == 0)
     return (SYS_ERROR);
-  dict_set(env, key, value);
+  dict_set(shell->env, key, value);
   return (OK);
 }
 
-t_error	unsetenv_builtin(t_darray *cmd, t_dict *env)
+t_error	builtin_unsetenv(t_darray *cmd, t_shell *shell)
 {
   if (cmd->current_size < 2)
     return (SYS_ERROR);
-  dict_delete(env, cmd->data[1], &free);
+  dict_delete(shell->env, cmd->data[1], &free);
   return (OK);
 }
 
-t_error	getenv_builtin(t_darray *cmd, t_dict *env)
+t_error	builtin_getenv(t_darray *cmd, t_shell *shell)
 {
   char	*value;
 
   if (cmd->current_size < 2)
     return (SYS_ERROR);
-  if ((value = dict_search(env, cmd->data[1])) == NULL)
+  if ((value = dict_search(shell->env, cmd->data[1])) == NULL)
     return (NULL_POINTER);
   my_putstr(value);
   my_putstr("\n");

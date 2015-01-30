@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 **
 ** Started on  Thu Oct  9 18:14:32 2014 Louis Person
-** Last update Mon Jan 19 22:06:13 2015 Louis Person
+** Last update Thu Jan 29 00:12:05 2015 Louis Person
 */
 
 #ifndef MY_H_
@@ -15,6 +15,7 @@
 # include "my/error.h"
 # include "my/strings.h"
 # include "my/dynamo.h"
+# include "my/queues.h"
 # include "my/trees.h"
 # include "my/dictionaries.h"
 # include "my/chalk.h"
@@ -47,5 +48,6 @@ char	*get_next_line(int);
 char	*my_getenv(char **, const char *);
 int	my_read(int, char *, int);
 void	*my_memcpy(void *, void *, int);
+char	*path(char *, char *);
 
 #endif /* !MY_H_ */

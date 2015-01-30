@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.eu>
 **
 ** Started on  Mon Dec  29 17:22:57 2014 Louis Person
-** Last update Wed Jan 21 15:10:25 2015 Louis Person
+** Last update Thu Jan 29 15:37:59 2015 Louis Person
 */
 
 #ifndef MY_ERROR
@@ -24,6 +24,8 @@ typedef enum	e_error
   SIZE_TOO_BIG,
   SIZE_TOO_SMALL,
   NOENT,
+  PARSE_ERROR,
+  NORIGHT,
   ERRORS
 }		t_error;
 

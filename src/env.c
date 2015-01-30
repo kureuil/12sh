@@ -1,15 +1,14 @@
 /*
-** env.c for minishell1 in /home/person_l
+** env.c<2> for fabrish in /home/person_l
 ** 
 ** Made by Louis Person
 ** Login   <person_l@epitech.net>
 ** 
-** Started on  Wed Jan 21 22:56:21 2015 Louis Person
-** Last update Sun Jan 25 22:23:22 2015 Louis Person
+** Started on  Wed Jan 28 10:23:22 2015 Louis Person
+** Last update Thu Jan 29 12:07:41 2015 Louis Person
 */
 
 #include <stdlib.h>
-#include <unistd.h>
 #include "my.h"
 
 t_dict		*parse_env()
@@ -30,6 +29,7 @@ t_dict		*parse_env()
       key = my_strsep(&copy, "=");
       value = my_strdup(copy);
       dict_set(env, key, value);
+      free(key);
       i++;
     }
   return (env);
@@ -49,4 +49,17 @@ char	*serialize_env(char *key, char *value)
   my_strncat(res, "=", 1);
   my_strncat(res, value, vlen);
   return (res);
+}
+
+void	free_env(char **env)
+{
+  int	i;
+
+  i = 0;
+  while (env[i] != NULL)
+    {
+      free(env[i]);
+      i++;
+    }
+  free(env);
 }

@@ -1,11 +1,11 @@
 ##
-## Makefile for minishell1 in /home/person_l
+## Makefile for fabrish in /home/person_l
 ## 
 ## Made by Louis Person
 ## Login   <person_l@epitech.net>
 ## 
-## Started on  Tue Jan 20 14:03:29 2015 Louis Person
-## Last update Sun Jan 25 23:39:48 2015 Louis Person
+## Started on  Mon Jan 26 09:34:40 2015 Louis Person
+## Last update Fri Jan 30 12:11:08 2015 Louis Person
 ##
 
 NAME	= mysh
@@ -17,34 +17,63 @@ RM	= rm -rf
 CFLAGS	+= -g
 CFLAGS	+= -Wall
 CFLAGS	+= -Wextra
+#CFLAGS	+= -Wno-unused-parameter
 CFLAGS	+= -I ./inc/
 
 LDFLAGS	= -L ./lib/
 LDFLAGS	+= -l my
 
-SRCS	= src/minishell.c \
-	src/env.c \
-	src/error.c \
-	src/path.c \
-	src/command.c \
-	src/input.c \
-	src/builtins.c \
-	src/prompt.c \
+SRCS	= src/behaviors/and.c \
+	src/behaviors/call.c \
+	src/behaviors/or.c \
+	src/behaviors/sleep.c \
+	src/builtins/builtins.c \
+	src/builtins/cd.c \
 	src/builtins/env.c \
-	src/builtins/cd.c
+	src/builtins/exit.c \
+	src/lexer/lexer.c \
+	src/lexer/lexicon.c \
+	src/lexer/token.c \
+	src/lexicon/and.c \
+	src/lexicon/call.c \
+	src/lexicon/eoc.c \
+	src/lexicon/eof.c \
+	src/lexicon/lparenthesis.c \
+	src/lexicon/or.c \
+	src/lexicon/rparenthesis.c \
+	src/interpreter/interpreter.c \
+	src/parsers/and.c \
+	src/parsers/call.c \
+	src/parsers/eoc.c \
+	src/parsers/eof.c \
+	src/parsers/lparenthesis.c \
+	src/parsers/or.c \
+	src/parsers/rparenthesis.c \
+	src/parsers/sof.c \
+	src/parsers/string.c \
+	src/parsers/undefined.c \
+	src/prompt/backslash.c \
+	src/prompt/return.c \
+	src/prompt/user.c \
+	src/char.c \
+	src/env.c \
+	src/errors.c \
+	src/eval.c \
+	src/fabrish.c \
+	src/parser.c \
+	src/prompt.c \
+	src/shell.c
 
 OBJS	= $(SRCS:.c=.o)
 
-all: $(NAME)
+all:
+	$(MAKE) $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
 
 test:
-	./$(NAME)
-
-tests:
-	testrunner.py
+	valgrind ./$(NAME)
 
 clean:
 	$(RM) $(OBJS)
