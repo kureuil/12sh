@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Thu Jan 29 20:46:56 2015 Louis Person
-** Last update Thu Jan 29 20:51:11 2015 Louis Person
+** Last update Fri Jan 30 12:45:16 2015 Louis Person
 */
 
 #include <stdlib.h>
@@ -16,6 +16,8 @@ void		puts_env(void *ptr)
 {
   t_bucket	*bucket;
 
+  if (ptr == NULL)
+    return;
   bucket = (t_bucket *)ptr;
   my_putstr(bucket->key);
   my_putstr("=");
@@ -26,7 +28,8 @@ void		puts_env(void *ptr)
 t_error	builtin_env(t_darray *cmd, t_shell *shell)
 {
   cmd = NULL;
-  tree_map(shell->env->root, &puts_env);
+  if (shell->env->root != NULL)
+    tree_map(shell->env->root, &puts_env);
   return (OK);
 }
 
