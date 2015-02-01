@@ -5,7 +5,7 @@
 ## Login   <person_l@epitech.net>
 ## 
 ## Started on  Mon Jan 26 09:34:40 2015 Louis Person
-## Last update Fri Jan 30 12:11:08 2015 Louis Person
+## Last update Sun Feb  1 17:51:39 2015 Louis Person
 ##
 
 NAME	= mysh
@@ -17,7 +17,6 @@ RM	= rm -rf
 CFLAGS	+= -g
 CFLAGS	+= -Wall
 CFLAGS	+= -Wextra
-#CFLAGS	+= -Wno-unused-parameter
 CFLAGS	+= -I ./inc/
 
 LDFLAGS	= -L ./lib/
@@ -55,6 +54,7 @@ SRCS	= src/behaviors/and.c \
 	src/prompt/backslash.c \
 	src/prompt/return.c \
 	src/prompt/user.c \
+	src/alias.c \
 	src/char.c \
 	src/env.c \
 	src/errors.c \
@@ -67,7 +67,7 @@ SRCS	= src/behaviors/and.c \
 OBJS	= $(SRCS:.c=.o)
 
 all:
-	$(MAKE) $(NAME)
+	$(MAKE) -j $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)

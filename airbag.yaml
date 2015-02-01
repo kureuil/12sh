@@ -1,0 +1,23 @@
+project: Minishell1
+program: ./mysh
+args: ""
+
+tests:
+    It should work stop if no input specified:
+        stdin: "cat cases/no-input.test"
+        expected: ""
+    It should be able to execute programs:
+        stdin: "cat cases/list-dir-np-na.test"
+        expected: "!cases/list-dir-np-na.res"
+    It should be able to pass args to programs:
+        stdin: "cat cases/list-dir-np.test"
+        expected: "!cases/list-dir-np.res"
+    It should be able to escape arguments:
+        stdin: "cat cases/echo.test"
+        expected: "!cases/echo.res"
+    It should be able to chain commands:
+        stdin: "cat cases/chaining.test"
+        expected: "!cases/chaining.res"
+    It should be able to run command if previous failed:
+        stdin: "cat cases/or.test"
+        expected: "!cases/or.res"

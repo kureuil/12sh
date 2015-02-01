@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.eu>
 **
 ** Started on  Mon Dec  29 17:22:57 2014 Louis Person
-** Last update Thu Jan 29 15:37:59 2015 Louis Person
+** Last update Sun Feb  1 11:25:39 2015 Louis Person
 */
 
 #ifndef MY_ERROR
@@ -26,6 +26,8 @@ typedef enum	e_error
   NOENT,
   PARSE_ERROR,
   NORIGHT,
+  MISM_QUOT,
+  MISM_BRAK,
   ERRORS
 }		t_error;
 

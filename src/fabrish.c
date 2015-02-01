@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Mon Jan 26 09:38:08 2015 Louis Person
-** Last update Fri Jan 30 09:37:47 2015 Louis Person
+** Last update Sun Feb  1 18:12:26 2015 Louis Person
 */
 
 #define _GNU_SOURCE
@@ -48,7 +48,6 @@ int		main()
   signals();
   if (shell_new(&shell) == -1)
     exit(1);
-  set_shell(shell);
   if ((buffer = malloc(ARG_MAX + 1)) == NULL)
     exit(1);
   prompt_print(shell);

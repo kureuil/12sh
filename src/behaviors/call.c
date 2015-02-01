@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Wed Jan 28 23:36:27 2015 Louis Person
-** Last update Fri Jan 30 09:37:26 2015 Louis Person
+** Last update Sun Feb  1 16:45:41 2015 Louis Person
 */
 
 #include <sys/types.h>
@@ -44,15 +44,11 @@ t_error		launch_command(char *program, t_darray *cmd, t_shell *shell)
     }
   else if (pid == -1)
     return (SYS_ERROR);
-  else
-    {
-      shell->child = pid;
-      waitpid(pid, &status, 0);
-      if (WIFEXITED(status))
-	shell->status = WEXITSTATUS(status);
-      return (OK);
-    }
-  return (NOENT);
+  shell->child = pid;
+  waitpid(pid, &status, 0);
+  if (WIFEXITED(status))
+    shell->status = WEXITSTATUS(status);
+  return (OK);
 }
 
 t_error		run_through_path(t_darray *cmd, t_shell *shell, char **paths)
@@ -90,7 +86,7 @@ t_error		handle_command(t_darray *cmd, t_shell *shell)
       return (ret);
     }
   if (my_strncmp(cmd->data[0], "/", 1) == 0 ||
-      my_strncmp(cmd->data[0], "./", 2) == 0)
+      my_strncmp(cmd->data[0], ".", 1) == 0)
     if (launch_command(cmd->data[0], cmd, shell) == OK)
       return (OK);
   if ((paths = my_strsplit(dict_search(shell->env, "PATH"), ":")) == NULL)

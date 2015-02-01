@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Thu Jan 29 15:49:08 2015 Louis Person
-** Last update Thu Jan 29 20:48:57 2015 Louis Person
+** Last update Sun Feb  1 17:15:02 2015 Louis Person
 */
 
 #ifndef BUILTINS_H_
@@ -27,5 +27,6 @@ t_error	builtin_env(struct s_darray *, struct s_shell *);
 t_error	builtin_setenv(struct s_darray *, struct s_shell *);
 t_error	builtin_unsetenv(struct s_darray *, struct s_shell *);
 t_error	builtin_getenv(struct s_darray *, struct s_shell *);
+t_error	builtin_alias(struct s_darray *, struct s_shell *);
 
 #endif /* !BUILTINS_H_ */

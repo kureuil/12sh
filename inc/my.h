@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 **
 ** Started on  Thu Oct  9 18:14:32 2014 Louis Person
-** Last update Thu Jan 29 00:12:05 2015 Louis Person
+** Last update Sun Feb  1 13:17:00 2015 Louis Person
 */
 
 #ifndef MY_H_
@@ -49,5 +49,7 @@ char	*my_getenv(char **, const char *);
 int	my_read(int, char *, int);
 void	*my_memcpy(void *, void *, int);
 char	*path(char *, char *);
+int	copy(int, int);
+t_error	check_existence(char *);
 
 #endif /* !MY_H_ */

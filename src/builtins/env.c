@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Thu Jan 29 20:46:56 2015 Louis Person
-** Last update Fri Jan 30 12:45:16 2015 Louis Person
+** Last update Sun Feb  1 12:42:22 2015 Louis Person
 */
 
 #include <stdlib.h>
@@ -28,7 +28,7 @@ void		puts_env(void *ptr)
 t_error	builtin_env(t_darray *cmd, t_shell *shell)
 {
   cmd = NULL;
-  if (shell->env->root != NULL)
+  if (shell->env->root != NULL && shell->env->root->data != NULL)
     tree_map(shell->env->root, &puts_env);
   return (OK);
 }

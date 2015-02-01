@@ -1,0 +1,1 @@
+cat lol || echo "cat lol failed!"

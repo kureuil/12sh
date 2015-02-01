@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Tue Jan 27 14:35:57 2015 Louis Person
-** Last update Fri Jan 30 12:12:47 2015 Louis Person
+** Last update Sun Feb  1 16:33:27 2015 Louis Person
 */
 
 #include <stdbool.h>
@@ -14,6 +14,8 @@
 #include "my.h"
 #include "char.h"
 #include "lexer.h"
+#include "shell.h"
+#include "lexicon.h"
 
 int	get_word_len(const char *str)
 {
@@ -67,12 +69,46 @@ char	*extract_word(char **str)
   return (word);
 }
 
+void		add_command(t_darray *cmd, char *word)
+{
+  t_shell	*shell;
+  t_token	*tok;
+  char		*alias;
+  int		i;
+
+  shell = get_shell();
+  if (word[0] != '\\' && (alias = dict_search(shell->alias, word)) != NULL)
+    {
+      if ((tok = grammar_call(&alias)) == NULL)
+	return;
+      i = -1;
+      while (++i < (((t_darray *)tok->value)->current_size - 1))
+        cmd->add(cmd, my_strdup(((t_darray *)tok->value)->data[i]));
+      free_dynamo(tok->value);
+      tok->value = NULL;
+      tok->type = T_UNDEFINED;
+      token_delete(tok);
+    }
+  else if (word[0] == '\\')
+    {
+      cmd->add(cmd, my_strdup(word + 1));
+      free(word);
+    }
+  else
+    cmd->add(cmd, word);
+}
+
 t_token		*grammar_call(char **str)
 {
+  static int	call = 0;
   t_darray	*command;
   char		*word;
   t_token	*res;
+  bool		first;
 
+  if (call++ > 100)
+    return (NULL);
+  first = true;
   if ((command = create_dynamo(NULL)) == NULL)
     return (NULL);
   if (token_new(&res) == -1)
@@ -80,10 +116,12 @@ t_token		*grammar_call(char **str)
   res->type = T_CALL;
   while ((word = extract_word(str)) != NULL)
     {
-      command->add(command, word);
+      first == true ? add_command(command, word) : command->add(command, word);
       skip_whitespace(str);
+      first = false;
     }
   command->add(command, NULL);
   res->value = command;
+  call--;
   return (res);
 }
