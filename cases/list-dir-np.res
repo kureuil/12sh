@@ -3,6 +3,7 @@ airbag.yaml
 cases
 dir
 fabrish
+fabrish.tar
 inc
 lib
 Makefile

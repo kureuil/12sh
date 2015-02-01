@@ -5,7 +5,7 @@
 ## Login   <person_l@epitech.net>
 ## 
 ## Started on  Mon Jan 26 09:34:40 2015 Louis Person
-## Last update Sun Feb  1 17:51:39 2015 Louis Person
+## Last update Sun Feb  1 23:05:10 2015 Louis Person
 ##
 
 NAME	= mysh
@@ -14,7 +14,6 @@ CC	= clang
 
 RM	= rm -rf
 
-CFLAGS	+= -g
 CFLAGS	+= -Wall
 CFLAGS	+= -Wextra
 CFLAGS	+= -I ./inc/
