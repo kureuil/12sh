@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Sun May  3 18:21:22 2015 Louis Person
-** Last update Sun May 24 19:42:46 2015 Louis Person
+** Last update Sun May 24 23:38:43 2015 Louis Person
 */
 
 #include <sys/types.h>
@@ -90,8 +90,10 @@ int	interpret_pipe(t_interpreter *interpreters,
       if (exec_node(interpreters, shell, tnode->right) == -1)
 	return (-1);
     }
-  close(shell->fd[0][0]);
-  close(shell->fd[0][1]);
+  if (shell->fd[0][0] != STDIN_FILENO)
+    close(shell->fd[0][0]);
+  if (shell->fd[0][1] != -1)
+    close(shell->fd[0][1]);
   shell->fd[0][0] = STDIN_FILENO;
   shell->fd[0][1] = -1;
   return (0);

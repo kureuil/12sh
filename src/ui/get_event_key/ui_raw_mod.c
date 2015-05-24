@@ -5,7 +5,7 @@
 ** Login   <paris_e@epitech.net>
 ** 
 ** Started on  Wed Feb 18 16:09:33 2015 Adrien Paris
-** Last update Sat May 23 00:42:41 2015 Adrien Paris
+** Last update Sun May 24 23:37:14 2015 Louis Person
 */
 
 #include <unistd.h>
@@ -17,7 +17,7 @@ int             ui_set_attr(struct termios *t)
 {
   if (tcsetattr(0, 1, t) == -1)
     {
-      fprintf(stderr, "/!\\ tcsetattr failled\n");
+      my_perror();
       return (EXIT_FAILURE);
     }
   return (EXIT_SUCCESS);
