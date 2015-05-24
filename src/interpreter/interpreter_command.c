@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Sun May  3 18:21:22 2015 Louis Person
-** Last update Sun May 24 22:45:25 2015 Louis Person
+** Last update Sun May 24 23:11:18 2015 Louis Person
 */
 
 #include <linux/limits.h>
@@ -80,8 +80,8 @@ static int		handle_builtin(struct s_shell *shell,
       return (0);
     }
   shell->child = pid;
-  if (shell->piped == true && tcsetpgrp(STDIN_FILENO, pid) == -1)
-    return (-1);
+  /* if (tcsetpgrp(STDIN_FILENO, pid) == -1) */
+  /*   return (-1); */
   return (0);
 }
 
