@@ -1,0 +1,44 @@
+/*
+** shell.h for 42sh in /home/person_l/rendu/42sh/tests/interpreter
+** 
+** Made by Louis Person
+** Login   <person_l@epitech.net>
+** 
+** Started on  Tue May  5 18:08:06 2015 Louis Person
+** Last update Tue May 19 13:53:09 2015 Louis Person
+*/
+
+#ifndef SHELL_H_
+# define SHELL_H_
+
+# include <stdbool.h>
+
+struct s_shell
+{
+  bool	exit;
+  int	returnvalue;
+  int	fd[3];
+  int	piped;
+};
+
+/*
+** Initializes shell structure.
+*/
+int	sh_init(struct s_shell *shell);
+
+/*
+** Tells the shell to exit.
+*/
+int	sh_exit(struct s_shell *shell, int code);
+
+/*
+** Tells the shell to set the return value to code.
+*/
+int	sh_return(struct s_shell *shell, int code);
+
+/*
+** Destroys a shell structure.
+*/
+int	sh_destroy(struct s_shell *shell);
+
+#endif /* !SHELL_H_ */

@@ -1,0 +1,50 @@
+/*
+** string.h for libmy in /home/person_l
+** 
+** Made by Louis Person
+** Login   <person_l@epitech.net>
+** 
+** Started on  Fri May  1 18:59:25 2015 Louis Person
+** Last update Fri May  1 19:13:22 2015 Louis Person
+*/
+
+#ifndef STR_H_
+# define STR_H_
+
+# include <sys/types.h>
+
+struct		s_string
+{
+  char		*_string;
+  size_t	len;
+};
+
+/*
+** Allocates a new string object.
+*/
+int	string_new(struct s_string **ptr);
+
+/*
+** Initializes a new string. Default size is 64 bytes.
+*/
+int	string_init(struct s_string *string);
+
+/*
+** Initializes a new string from an existing char *.
+** Uses strlen to get the char * length.
+*/
+int	string_init_from_bytes(struct s_string *string, char *bytes);
+
+/*
+** Initializes a new string from an existing char * with a length of n.
+*/
+int	string_init_from_nbytes(struct s_string *string,
+				char *bytes,
+				size_t n);
+
+/*
+** Destroys a string object.
+*/
+int	string_destroy(struct s_string *string);
+
+#endif /* !STR_H_ */

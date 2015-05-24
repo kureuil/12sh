@@ -1,0 +1,15 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "str.h"
+
+int	main()
+{
+  struct s_string	*string;
+
+  string_new(&string);
+  string_init_from_bytes(string, "Hello You !");
+  string_cat_str(string, " How are you ?");
+  printf("%s\n", string->_string);
+  string_destroy(string);
+  return (EXIT_SUCCESS);
+}

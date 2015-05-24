@@ -1,0 +1,23 @@
+/*
+** builtins.h for 42sh in /home/person_l
+** 
+** Made by Louis Person
+** Login   <person_l@epitech.net>
+** 
+** Started on  Sun May 24 06:42:03 2015 Louis Person
+** Last update Sun May 24 06:42:54 2015 Louis Person
+*/
+
+#ifndef BUILTINS_H_
+# define BUILTINS_H_
+
+typedef int (*bi_callback)(int argc, char **argv);
+
+struct s_builtin
+{
+  int	(*callback)(int argc, char **argv);
+};
+
+int	bi_create(struct s_builtin **builtinptr, );
+
+#endif /* !BUILTINS_H_ */

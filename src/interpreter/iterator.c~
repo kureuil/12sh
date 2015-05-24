@@ -1,0 +1,60 @@
+/*
+** interator.c for 42sh in /home/person_l/rendu/42sh
+** 
+** Made by Louis Person
+** Login   <person_l@epitech.net>
+** 
+** Started on  Sat May 23 03:30:47 2015 Louis Person
+** Last update Sat May 23 03:38:10 2015 Louis Person
+*/
+
+#include <assert.h>
+#include <stdlib.h>
+#include "my/my.h"
+
+static bool	shell_iterator_has_next(struct s_iterator *iter)
+{
+  assert(iter != NULL);
+  return (i->index != NULL);
+}
+
+static void	shell_iterator_next(struct s_iterator *iter)
+{
+  struct s_btree	*t;
+  struct s_ast_node	*data;
+
+  t = i->index;
+  data = (struct s_ast_node *)t->data;
+  if (t->left != NULL && data->type != TPIPE)
+    return (i->index = t->left, data);
+  if (t->right != NULL)
+    return (i->index = t->right, data);
+  while (t->up != NULL)
+    {
+      if (t->up->right != NULL && t->up->right != t)
+	return (i->index = t->up->right, data);
+      t = t->up;
+    }
+  return (i->index = NULL, data);
+}
+
+static void		*btree_iterator_peek(struct s_iterator *i)
+{
+  struct s_btree	*t;
+
+  t = i->holder;
+  return (t->data);
+}
+
+struct s_iterator	shell_iterator(struct s_btree *head)
+{
+  struct s_iterator	iter;
+
+  assert(head != NULL);
+  iter.index = head;
+  iter.holder = head;
+  iter.next = &shell_iterator_next;
+  iter.has_next = &shell_iterator_has_next;
+  iter.peek = &shell_iterator_peek;
+  return (iter);
+}

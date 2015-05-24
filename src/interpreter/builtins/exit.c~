@@ -1,0 +1,14 @@
+/*
+** exit.c for 42sh in /home/person_l
+** 
+** Made by Louis Person
+** Login   <person_l@epitech.net>
+** 
+** Started on  Sun May 24 08:42:08 2015 Louis Person
+** Last update Sun May 24 08:42:21 2015 Louis Person
+*/
+
+int	builtin_exit(size_t argc, char **argv)
+{
+  
+}

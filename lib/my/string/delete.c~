@@ -1,0 +1,18 @@
+/*
+** delete.c for libmy in /home/person_l/rendu/42sh/tests/interpreter
+** 
+** Made by Louis Person
+** Login   <person_l@epitech.net>
+** 
+** Started on  Tue May  5 16:25:13 2015 Louis Person
+** Last update Tue May  5 16:25:53 2015 Louis Person
+*/
+
+#include <assert.h>
+#include <stdlib.h>
+#include "str.h"
+
+int	string_delete()
+{
+  
+}

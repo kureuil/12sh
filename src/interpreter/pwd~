@@ -1,0 +1,41 @@
+/*
+** interpreter.c<2> for 42sh in /home/person_l
+** 
+** Made by Louis Person
+** Login   <person_l@epitech.net>
+** 
+** Started on  Tue Apr 21 18:04:38 2015 Louis Person
+** Last update Tue May  5 16:46:23 2015 Louis Person
+*/
+
+#include <assert.h>
+#include "my/my.h"
+#include "ast.h"
+#include "interpreter/interpreter.h"
+
+/*
+** @TESTABLE
+*/
+
+static void	get_interpreters(t_interpreter *interpreters)
+{
+  interpreters[TEMPTY] = &interpret_nothing;
+  interpreters[TPIPE] = &interpret_pipe;
+  interpreters[TCMD] = &interpret_command;
+  interpreters[TCOMPOSE] = &interpret_compose;
+  interpreters[TORIF] = &interpret_orif;
+  interpreters[TANDIF] = &interpret_andif;
+}
+
+int			interpret(struct s_btree *head)
+{
+  t_interpreter		interpreters[_T_COUNT];
+  struct s_ast_node	*anode;
+
+  assert(head != NULL);
+  anode = (struct s_ast_node *) head->left->data;
+  printf("Type: %d\n", anode->type);
+  get_interpreters(interpreters);
+  interpreters[anode->type](anode);
+  return (0);
+}

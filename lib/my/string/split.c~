@@ -1,0 +1,27 @@
+/*
+** split.c for libmy in /home/person_l/rendu/42sh
+** 
+** Made by Louis Person
+** Login   <person_l@epitech.net>
+** 
+** Started on  Tue May  5 15:15:03 2015 Louis Person
+** Last update Tue May  5 15:20:04 2015 Louis Person
+*/
+
+#include <assert.h>
+#include <string.h>
+#include "str.h"
+
+int	string_split(const struct s_string *string,
+		       const struct s_string *pattern,
+		       struct s_vec *matches)
+{
+return (0);
+}
+
+int	string_split_str(const struct s_string *string,
+			   const char *pattern,
+			   struct s_vec *matches)
+{
+return (0);
+}
