@@ -5,13 +5,14 @@
 ** Login   <paris_e@epitech.net>
 ** 
 ** Started on  Wed Feb 18 16:09:33 2015 Adrien Paris
-** Last update Sun May 24 23:37:14 2015 Louis Person
+** Last update Sun May 24 23:47:49 2015 Louis Person
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <termios.h>
 #include <stdio.h>
+#include "error.h"
 
 int             ui_set_attr(struct termios *t)
 {
