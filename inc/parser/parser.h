@@ -5,7 +5,7 @@
 ** Login   <rius_b@epitech.net>
 ** 
 ** Started on  Tue Apr 28 15:24:01 2015 Brendan Rius
-** Last update Sat May 23 02:25:09 2015 Brendan Rius
+** Last update Fri May 29 23:56:49 2015 Louis Person
 */
 
 #ifndef PARSER_H_
@@ -19,7 +19,6 @@ struct s_vec;
 ** Parse a queue of tokens and make "btree" points to an AST
 */
 int	parse(struct s_vec *tokens, struct s_btree **btree);
-
 
 int	parse_exp_complete(struct s_iterator *i_tokens,
 			   struct s_btree *node);

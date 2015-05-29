@@ -5,7 +5,7 @@
 ** Login   <adrien@epitech.net>
 ** 
 ** Started on  Sun May 24 16:31:54 2015 Adrien Paris
-** Last update Sun May 24 22:46:14 2015 Adrien Paris
+** Last update Fri May 29 23:01:21 2015 Louis Person
 */
 
 #include <sys/stat.h>
@@ -34,7 +34,7 @@ int			ui_prompt_arg(struct s_string *s)
   if ((string_replace_str(s, "\\#", nb)) != 0)
     return (EXIT_FAILURE);
   if ((pwd = getcwd(NULL, 0)) == NULL)
-    pwd = "(null)";
+    pwd = strdup("(null)");
   if ((string_replace_str(s, "\\w", pwd)) != 0)
     return (EXIT_FAILURE);
   free(pwd);

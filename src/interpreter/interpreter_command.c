@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Sun May  3 18:21:22 2015 Louis Person
-** Last update Sun May 24 23:11:18 2015 Louis Person
+** Last update Fri May 29 23:28:29 2015 Louis Person
 */
 
 #include <linux/limits.h>
@@ -77,11 +77,10 @@ static int		handle_builtin(struct s_shell *shell,
   else if (pid == 0)
     {
       sh_exit(shell, exec_builtin(shell, cmd, argv, argc));
+
       return (0);
     }
   shell->child = pid;
-  /* if (tcsetpgrp(STDIN_FILENO, pid) == -1) */
-  /*   return (-1); */
   return (0);
 }
 
@@ -104,7 +103,7 @@ static int	handle_executable(struct s_shell *shell,
   else
     {
       shell->child = pid;
-      if (shell->fd[0][0] == STDIN_FILENO)
+      if (shell->fd[0][0] == STDIN_FILENO && isatty(shell->fd[0][0]))
 	if (tcsetpgrp(STDIN_FILENO, pid) == -1)
 	  return (-1);
     }

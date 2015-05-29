@@ -5,14 +5,14 @@
 ** Login   <rius_b@epitech.net>
 ** 
 ** Started on  Fri Nov 21 19:04:13 2014 Brendan Rius
-** Last update Sat May 23 20:04:58 2015 Brendan Rius
+** Last update Fri May 29 23:56:25 2015 Louis Person
 */
 
 #ifndef LLIST_H_
 # define LLIST_H_
 
-# include "dictionnary.h"
 # include <sys/types.h>
+# include "dictionnary.h"
 
 typedef struct		s_llist_e
 {
@@ -150,7 +150,6 @@ int	llist_dict_remove(struct s_dict *dict, void *key);
 int	llist_dict_destroy(struct s_dict *dict);
 unsigned int	llist_dict_length(t_dict *dict);
 t_dict_entry	**llist_dict_get_entries(struct s_dict *dict);
-
 
 /*
 ** Return an iterator that goes from left to right

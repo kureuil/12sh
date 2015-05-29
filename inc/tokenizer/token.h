@@ -5,7 +5,7 @@
 ** Login   <rius_b@epitech.net>
 ** 
 ** Started on  Wed Apr 22 10:30:34 2015 Brendan Rius
-** Last update Sat May 23 00:59:41 2015 Louis Person
+** Last update Fri May 29 23:57:54 2015 Louis Person
 */
 
 #ifndef TOKEN_H_
@@ -13,7 +13,6 @@
 
 # include <sys/types.h>
 # include "my/str.h"
-
 
 /*
 ** Define the different types of a token.
@@ -45,7 +44,6 @@ struct			s_token
 ** Create DYNAMICALLY a new token. Returns 0 on success.
 */
 int	token_new(struct s_token **token_ptr);
-
 
 /*
 ** Init a token. Returns 0 on success.

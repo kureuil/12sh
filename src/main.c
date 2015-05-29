@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Sat May 23 17:44:00 2015 Louis Person
-** Last update Sun May 24 22:22:33 2015 Brendan Rius
+** Last update Fri May 29 23:45:18 2015 Louis Person
 */
 
 #include <unistd.h>
@@ -38,14 +38,13 @@ static char		*expand_cmd(char *line)
 	    return (NULL);
 	  i += shift;
 	}
-      if (line[i] == '~')
+      else if (line[i] == '~')
 	{
           if ((shift = tilde(line + i, &str)) == -1)
             return (NULL);
 	  i += shift;
         }
-      if (line[i] != '~' && line[i] != '$')
-	if (string_push(&str, line[i++]) != 0)
+      else if (string_push(&str, line[i++]) != 0)
 	  return (NULL);
     }
   return (str._string);
@@ -60,6 +59,7 @@ static int		evalcmd(char *line, struct s_shell *shell)
     return (0);
   if (tokenize(line, &tokens) == -1)
     return (0);
+  free(line);
   if (tokens.size == 0)
     return (0);
   if (parse(&tokens, &tree) == -1)

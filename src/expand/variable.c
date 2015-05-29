@@ -5,7 +5,7 @@
 ** Login   <ouvran_a@epitech.net>
 ** 
 ** Started on  Sat May 23 15:12:39 2015 Antoine Ouvrans
-** Last update Sun May 24 22:21:40 2015 Louis Person
+** Last update Fri May 29 23:42:24 2015 Louis Person
 */
 
 #include <stdlib.h>
@@ -49,7 +49,8 @@ ssize_t		  expand(const char *str, struct s_string *string)
   if (string_init(&string2) != 0)
     return (-1);
   while (str[i] && str[i] != ' ' && str[i] != '\t' &&
-	 str[i] != '/' && str[i] != '-')
+	 str[i] != '/' && str[i] != '-' && str[i] != '\'' &&
+	 str[i] != '"' && str[i] != '$')
     {
       if (string_push(&string2, str[i]) != 0)
 	return (-1);

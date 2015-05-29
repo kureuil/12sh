@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Sun May 24 18:59:34 2015 Louis Person
-** Last update Sun May 24 22:47:23 2015 Louis Person
+** Last update Fri May 29 23:53:23 2015 Louis Person
 */
 
 #include <sys/stat.h>
@@ -23,8 +23,8 @@ static int	right_redir_setup(struct s_shell *shell,
 
   (void) shell;
   fd = open(cmd->rredir,
-	    O_WRONLY | O_CREAT |
-	    (cmd->rtype == RT_RSIMPLE ? O_TRUNC : O_APPEND),
+	    O_WRONLY | O_CREAT
+	    | (cmd->rtype == RT_RSIMPLE ? O_TRUNC : O_APPEND),
 	    S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
   if (fd == -1)
     return (-1);

@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Tue May  5 15:15:03 2015 Louis Person
-** Last update Wed May 13 13:35:56 2015 Louis Person
+** Last update Fri May 29 23:53:00 2015 Louis Person
 */
 
 #define _BSD_SOURCE
@@ -18,7 +18,7 @@
 static int		push_to_vec(struct s_vec *vec, char *str)
 {
   struct s_string	*string;
-  
+
   if (str[0] == '\0')
     return (0);
   if (string_new(&string) == -1)

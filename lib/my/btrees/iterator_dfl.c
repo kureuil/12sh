@@ -5,7 +5,7 @@
 ** Login   <rius_b@epitech.net>
 ** 
 ** Started on  Thu Apr 30 19:43:22 2015 Brendan Rius
-** Last update Sun May 24 18:06:28 2015 Brendan Rius
+** Last update Fri May 29 23:52:47 2015 Louis Person
 */
 
 #include <assert.h>
@@ -45,7 +45,6 @@ static void		*btree_iterator_peek(struct s_iterator *i)
   t = i->holder;
   return (t->data);
 }
-
 
 struct s_iterator	btree_iterator_dfl(struct s_btree *tree)
 {
