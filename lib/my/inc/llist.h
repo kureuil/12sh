@@ -5,14 +5,14 @@
 ** Login   <rius_b@epitech.net>
 ** 
 ** Started on  Fri Nov 21 19:04:13 2014 Brendan Rius
-** Last update Sat May 23 20:04:58 2015 Brendan Rius
+** Last update Sat May 30 00:02:54 2015 Louis Person
 */
 
 #ifndef LLIST_H_
 # define LLIST_H_
 
-# include "dictionnary.h"
 # include <sys/types.h>
+# include "dictionnary.h"
 
 typedef struct		s_llist_e
 {

@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Sun May 24 18:59:34 2015 Louis Person
-** Last update Fri May 29 23:53:23 2015 Louis Person
+** Last update Sat May 30 00:01:27 2015 Louis Person
 */
 
 #include <sys/stat.h>
@@ -76,7 +76,7 @@ static int	tleft_redir(struct s_shell *shell,
   if (pipe(pipefd) == -1)
     return (-1);
   shell->fd[0][0] = pipefd[0];
-  shell->fd[0][1] = pipefd[1]; 
+  shell->fd[0][1] = pipefd[1];
   dup2(shell->fd[0][0], STDIN_FILENO);
   write(pipefd[1], cmd->lredir, strlen(cmd->lredir));
   write(pipefd[1], "\n", 1);
