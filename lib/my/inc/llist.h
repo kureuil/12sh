@@ -5,7 +5,7 @@
 ** Login   <rius_b@epitech.net>
 ** 
 ** Started on  Fri Nov 21 19:04:13 2014 Brendan Rius
-** Last update Sat May 30 00:02:54 2015 Louis Person
+** Last update Sat May 30 00:04:13 2015 Adrien Paris
 */
 
 #ifndef LLIST_H_
@@ -150,7 +150,6 @@ int	llist_dict_remove(struct s_dict *dict, void *key);
 int	llist_dict_destroy(struct s_dict *dict);
 unsigned int	llist_dict_length(t_dict *dict);
 t_dict_entry	**llist_dict_get_entries(struct s_dict *dict);
-
 
 /*
 ** Return an iterator that goes from left to right
