@@ -5,9 +5,10 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Sat May 23 17:44:00 2015 Louis Person
-** Last update Fri May 29 23:45:18 2015 Louis Person
+** Last update Sat May 30 00:15:54 2015 Louis Person
 */
 
+#define _BSD_SOURCE
 #include <unistd.h>
 #include <stdlib.h>
 #include <signal.h>
@@ -20,6 +21,16 @@
 #include "parser/parser.h"
 #include "tokenizer/tokenizer.h"
 #include "interpreter/interpreter.h"
+
+static void	sig_send(int sig)
+{
+  struct s_shell	*shell;
+
+  shell = sh_get();
+  if (shell == NULL || shell->child == 0)
+    return;
+  kill(shell->child, sig);
+}
 
 static char		*expand_cmd(char *line)
 {
@@ -113,9 +124,9 @@ int			main()
   ui_init(&dict_key);
   sh_init(&shell);
   signal(SIGTTOU, SIG_IGN);
-  signal(SIGINT, SIG_IGN);
+  signal(SIGINT, &sig_send);
   signal(SIGTSTP, SIG_IGN);
-  signal(SIGQUIT, SIG_IGN);
+  signal(SIGQUIT, &sig_send);
   if (read_loop(&shell, dict_key) == 0)
     ret = shell.returnvalue;
   else
