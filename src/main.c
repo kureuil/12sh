@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Sat May 23 17:44:00 2015 Louis Person
-** Last update Sat May 30 00:15:54 2015 Louis Person
+** Last update Sat May 30 00:45:47 2015 Louis Person
 */
 
 #define _BSD_SOURCE
@@ -27,8 +27,17 @@ static void	sig_send(int sig)
   struct s_shell	*shell;
 
   shell = sh_get();
-  if (shell == NULL || shell->child == 0)
+  if (shell == NULL)
     return;
+  if (isatty(STDIN_FILENO) && shell->child == 0)
+    return;
+  else if (!isatty(STDIN_FILENO))
+    {
+      if (shell->child != 0)
+	kill(shell->child, sig);
+      signal(sig, SIG_DFL);
+      kill(getpid(), sig);
+    }
   kill(shell->child, sig);
 }
 
