@@ -5,7 +5,7 @@
 ** Login   <rius_b@epitech.net>
 ** 
 ** Started on  Sat May 23 03:07:45 2015 Brendan Rius
-** Last update Sun May 24 22:01:35 2015 Louis Person
+** Last update Sat May 30 13:31:13 2015 Louis Person
 */
 
 /*
@@ -39,10 +39,14 @@ int	find_executable(const char *name, char *dest, size_t n)
 
   if (n == 0 || strlen(name) == 0)
     return (-1);
-  if (check_executable(name, dest, n) == 0)
-    return (0);
-  path = my_getenv("PATH");
-  if (path == NULL)
+  if (name[0] == '/' || name[0] == '.')
+    {
+      if (check_executable(name, dest, n) == 0)
+	return (0);
+      else
+	return (-1);
+    }
+  if ((path = my_getenv("PATH")) == NULL)
     return (-1);
   if ((path = strdup(path)) == NULL)
     return (-1);

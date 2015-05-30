@@ -5,7 +5,7 @@
 ** Login   <person_l@epitech.net>
 ** 
 ** Started on  Sat May 23 17:44:00 2015 Louis Person
-** Last update Sat May 30 00:45:47 2015 Louis Person
+** Last update Sat May 30 13:32:25 2015 Louis Person
 */
 
 #define _BSD_SOURCE
@@ -111,7 +111,6 @@ static int		read_loop(struct s_shell *shell, t_dict *dict_key)
 	}
       else if (line == NULL)
 	{
-	  shell->returnvalue = EXIT_SUCCESS;
 	  shell->exit = true;
 	  free(line);
 	  continue;

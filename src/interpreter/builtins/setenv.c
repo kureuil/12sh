@@ -5,12 +5,13 @@
 ** Login   <rius_b@epitech.net>
 ** 
 ** Started on  Sun May 24 12:54:54 2015 Brendan Rius
-** Last update Sun May 24 13:15:47 2015 Brendan Rius
+** Last update Sat May 30 13:45:58 2015 Louis Person
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "env/env.h"
+#include "shell.h"
 
 static void	setenv_usage()
 {
@@ -19,13 +20,24 @@ static void	setenv_usage()
 
 int	builtin_setenv(size_t argc, char **args)
 {
-  if (argc < 2)
+  if (argc == 0 || argc > 2)
     {
       setenv_usage();
-      return (-1);
+      return (sh_return(sh_get(), EXIT_FAILURE), -1);
     }
-  if (my_setenv(args[0], args[1]) == NULL)
-    return (fprintf(stderr, "cannot set environment variable\n"), -1);
-  else
-    return (0);
+  else if (argc == 1)
+    {
+      if (my_setenv(args[0], "") == NULL)
+	{
+	  sh_return(sh_get(), EXIT_FAILURE);
+	  return (fprintf(stderr, "cannot set environment variable\n"), -1);
+	}
+    }
+  else if (my_setenv(args[0], args[1]) == NULL)
+    {
+      sh_return(sh_get(), EXIT_FAILURE);
+      return (fprintf(stderr, "cannot set environment variable\n"), -1);
+    }
+  sh_return(sh_get(), EXIT_SUCCESS);
+  return (0);
 }

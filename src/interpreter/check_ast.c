@@ -5,11 +5,12 @@
 ** Login   <rius_b@epitech.net>
 ** 
 ** Started on  Sat May 23 03:33:19 2015 Brendan Rius
-** Last update Sun May 24 22:07:01 2015 Louis Person
+** Last update Sat May 30 13:28:22 2015 Louis Person
 */
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include "interpreter/interpreter.h"
 #include "my/my.h"
 #include "ast.h"
@@ -80,9 +81,12 @@ bool			is_ast_valid(struct s_btree *tree)
 	return (fprintf(stderr, "error: empty command\n"), false);
       if (find_executable(PEEK(&veci), executable, 255) != 0 &&
 	  dict_get(sh_get()->builtins, PEEK(&veci)) == NULL)
-	return (fprintf(stderr,
-			"error: executable not found or not executable\n"),
-		false);
+	{
+	  sh_return(sh_get(), EXIT_FAILURE);
+	  return (fprintf(stderr,
+			  "error: executable not found or not executable\n"),
+		  false);
+	}
     }
   if (wrong_redirections(tree))
     return (fprintf(stderr, "error: wrong redirections\n"), false);
