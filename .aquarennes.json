@@ -1,0 +1,6 @@
+{
+  "linter": {
+    "program": "python2",
+    "args": ["/home/person_l/bin/mouliclang"]
+  }
+}
