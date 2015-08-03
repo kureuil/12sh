@@ -1,11 +1,11 @@
 /*
 ** ast.c for 42sh in /home/brendan/rendu/42sh
-** 
+**
 ** Made by Brendan Rius
 ** Login   <rius_b@epitech.net>
-** 
+**
 ** Started on  Fri May  1 19:26:22 2015 Brendan Rius
-** Last update Sun May 24 17:31:30 2015 Brendan Rius
+** Last update Thu Jul 23 17:59:38 2015 Louis Person
 */
 
 #include <string.h>
@@ -27,5 +27,14 @@ int	ast_node_new(struct s_ast_node **ast_nodeptr)
 {
   if ((*ast_nodeptr = malloc(sizeof(struct s_ast_node))) == NULL)
     return (-1);
-  return (0);
+  return (int)0;
+
+
+
+
+
+
+
+
+
 }
